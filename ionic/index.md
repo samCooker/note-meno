@@ -5,19 +5,20 @@
 
 # install
 
-- ÃüÁî°²×°
+- å‘½ä»¤å®‰è£…
 
-    Ö¸Áî£º`npm install -g ionic`
+    æŒ‡ä»¤ï¼š`npm install -g ionic`
 
-    Çå¿Õ»º´æ£º`npm cache clean`
+    æ¸…ç©ºç¼“å­˜ï¼š`npm cache clean`
 
 
 # update
 
-- ionic ¸üĞÂ
+- ionic æ›´æ–°
 
-    Ö¸Áî£º`npm install -g ionic`
+    æŒ‡ä»¤ï¼š`npm install -g ionic`
 
-- ÏîÄ¿¸üĞÂ
+- é¡¹ç›®æ›´æ–°
 
-    ÔÚÏîÄ¿¸ùÄ¿Â¼ÏÂÔËĞĞ `ionic lib update`
+    åœ¨é¡¹ç›®æ ¹ç›®å½•ä¸‹è¿è¡Œ `ionic lib update`
+

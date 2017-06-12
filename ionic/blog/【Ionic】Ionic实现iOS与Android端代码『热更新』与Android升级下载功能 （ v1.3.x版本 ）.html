@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<!-- saved from url=(0042)http://kaibin.me/2016/07/17/ionic-hotcode/ -->
+<html class="theme-next muse use-motion"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="./【Ionic】Ionic实现iOS与Android端代码『热更新』与Android升级下载功能 （ v1.3.x版本 ）_files/jquery.fancybox.css" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="./【Ionic】Ionic实现iOS与Android端代码『热更新』与Android升级下载功能 （ v1.3.x版本 ）_files/css" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="./【Ionic】Ionic实现iOS与Android端代码『热更新』与Android升级下载功能 （ v1.3.x版本 ）_files/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+<link href="./【Ionic】Ionic实现iOS与Android端代码『热更新』与Android升级下载功能 （ v1.3.x版本 ）_files/main.css" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="ionic,iOS,Android,cordova,热更新,升级下载,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="http://kaibin.me/favicon.ico?v=5.0.1">
+
+
+
+
+
+
+<meta name="description" content="热更新的好处通常ionic源码可包括（HTML，JavaScript，CSS文件和其他资源），往常我们必须通过提交程序到应用市场，经过漫长的审核后才可让用户更新，每改动一个小地方都需要重新打新版本。
+现在ionic通过使用cordova插件cordova-hot-code-push实现实现iOS与Android端代码『热更新』功能，可不必发布应用市场经平台审核，便可动态更新App源码的目的。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Ionic】Ionic实现iOS与Android端代码『热更新』与Android升级下载功能 （ v1.3.x版本 ）">
+<meta property="og:url" content="http://kaibin.me/2016/07/17/ionic-hotcode/index.html">
+<meta property="og:site_name" content="Kai&#39;s Blog">
+<meta property="og:description" content="热更新的好处通常ionic源码可包括（HTML，JavaScript，CSS文件和其他资源），往常我们必须通过提交程序到应用市场，经过漫长的审核后才可让用户更新，每改动一个小地方都需要重新打新版本。
+现在ionic通过使用cordova插件cordova-hot-code-push实现实现iOS与Android端代码『热更新』功能，可不必发布应用市场经平台审核，便可动态更新App源码的目的。">
+<meta property="og:image" content="http://7xoy0t.com1.z0.glb.clouddn.com/Update-graphic-480x310.jpg">
+<meta property="og:updated_time" content="2016-08-14T02:14:20.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【Ionic】Ionic实现iOS与Android端代码『热更新』与Android升级下载功能 （ v1.3.x版本 ）">
+<meta name="twitter:description" content="热更新的好处通常ionic源码可包括（HTML，JavaScript，CSS文件和其他资源），往常我们必须通过提交程序到应用市场，经过漫长的审核后才可让用户更新，每改动一个小地方都需要重新打新版本。
+现在ionic通过使用cordova插件cordova-hot-code-push实现实现iOS与Android端代码『热更新』功能，可不必发布应用市场经平台审核，便可动态更新App源码的目的。">
+<meta name="twitter:image" content="http://7xoy0t.com1.z0.glb.clouddn.com/Update-graphic-480x310.jpg">
+
+
+
+<script src="./【Ionic】Ionic实现iOS与Android端代码『热更新』与Android升级下载功能 （ v1.3.x版本 ）_files/hm.js.下载"></script><script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://kaibin.me/2016/07/17/ionic-hotcode/">
+
+  <title> 【Ionic】Ionic实现iOS与Android端代码『热更新』与Android升级下载功能 （ v1.3.x版本 ） | Kai's Blog </title>
+<script type="text/javascript" async="" id="duoshuo-script" src="http://static.duoshuo.com/embed.js" charset="UTF-8"></script><style type="text/css">.fancybox-margin{margin-right:21px;}</style><style type="text/css">._yddWrapper *{display:inline;text-align:left;font-size:12px;background:transparent;padding:0;margin:0;border:0;text-decoration:none}._yddWrapper div{display:block}._yddWrapper{z-index:10001;border:1px solid #b2d8f8;min-width:250px;max-width:400px;box-shadow:1px 1px 6px rgba(0,0,0,.2)}._yddContainer{color:#222;background:#fff;font-family:'Microsoft YaHei';position:relative;width:100%;height:100%;top:0;left:0}._yddTop{height:22px;line-height:22px;padding:0 4px;background-color:#e8f5fc}._yd_phonetic{font-family:'lucida sans unicode',arial,sans-serif;font-size:12px}._yd_voice_btn,._yd_voice_btn:hover{width:15px;height:15px;display:inline-block;vertical-align:middle;cursor:pointer;background:url(data:image/gif;base64,R0lGODlhDwAPAJECAP///zWh1P///wAAACH5BAEAAAIALAAAAAAPAA8AAAIrlC+hyKbbzoPxAcrsDYk7vXWSApQhRZqn1wXqgoIw+7lrY2H4FCF8P6IJCgA7)}a._yd_voice_btn:hover{opacity:.75}#_yd_close{cursor:pointer;position:absolute;top:0;right:4px;text-align:center;font-size:12pt}._yddKeyTitle{font-weight:bold}._yddMiddle{margin-bottom:10px}._ydd-tabs{color:#959595;margin:5px 0;padding:0 5px;height:18px;border-bottom:1px solid}._ydd-tab{display:block;float:left;height:18px;margin:0 5px -1px 0;padding:0 4px;line-height:18px;border:1px solid;border-bottom:0 none}._ydd-tabs,._ydd-tab{border-color:#d5e7f3;background:#fff}._ydd-trans-container{line-height:160%}._ydd-padding010{padding:0 10px}</style></head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans" class="" style="padding-right: 320px;">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?3bf7d76b7f741514e89cbccbfab85c2d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="http://kaibin.me/" class="brand" rel="start" style="opacity: 1;">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title" style="opacity: 1; top: 0px;">Kai's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle" style="opacity: 1; top: 0px;">Yesterday you said tomorrow.</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home" style="opacity: 1; transform: translateY(0px);">
+          <a href="http://kaibin.me/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories" style="opacity: 1; transform: translateY(0px);">
+          <a href="http://kaibin.me/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives" style="opacity: 1; transform: translateY(0px);">
+          <a href="http://kaibin.me/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags" style="opacity: 1; transform: translateY(0px);">
+          <a href="http://kaibin.me/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article" style="opacity: 1; display: block; transform: translateY(0px);">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                【Ionic】Ionic实现iOS与Android端代码『热更新』与Android升级下载功能 （ v1.3.x版本 ）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-17T14:46:56+08:00" content="2016-07-17">
+              2016-07-17
+            </time>
+          </span>
+
+          
+            <span class="post-category">
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope="" itemtype="https://schema.org/Thing">
+                  <a href="http://kaibin.me/categories/code/" itemprop="url" rel="index">
+                    <span itemprop="name">code</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="http://kaibin.me/2016/07/17/ionic-hotcode/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/17/ionic-hotcode/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+        <div class="post-gallery" itemscope="" itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox" href="./【Ionic】Ionic实现iOS与Android端代码『热更新』与Android升级下载功能 （ v1.3.x版本 ）_files/Update-graphic-480x310.jpg" rel="group" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="./【Ionic】Ionic实现iOS与Android端代码『热更新』与Android升级下载功能 （ v1.3.x版本 ）_files/Update-graphic-480x310.jpg" itemprop="contentUrl">
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
+
+      
+        <h1 id="热更新的好处"><a href="http://kaibin.me/2016/07/17/ionic-hotcode/#热更新的好处" class="headerlink" title="热更新的好处"></a>热更新的好处</h1><p>通常ionic源码可包括（HTML，JavaScript，CSS文件和其他资源），往常我们必须通过提交程序到应用市场，经过漫长的审核后才可让用户更新，每改动一个小地方都需要重新打新版本。</p>
+<p>现在ionic通过使用cordova插件<code>cordova-hot-code-push</code>实现实现iOS与Android端代码『热更新』功能，<strong>可不必发布应用市场经平台审核，便可动态更新App源码的目的</strong>。</p>
+<a id="more"></a>
+<h1 id="热更新实现原理"><a href="http://kaibin.me/2016/07/17/ionic-hotcode/#热更新实现原理" class="headerlink" title="热更新实现原理"></a>热更新实现原理</h1><p><a href="./【Ionic】Ionic实现iOS与Android端代码『热更新』与Android升级下载功能 （ v1.3.x版本 ）_files/152638zaxz5xz3t58bfts2.png" class="fancybox" rel="group"><img src="./【Ionic】Ionic实现iOS与Android端代码『热更新』与Android升级下载功能 （ v1.3.x版本 ）_files/152638zaxz5xz3t58bfts2.png" alt=""></a></p>
+<h1 id="基础实现方法"><a href="http://kaibin.me/2016/07/17/ionic-hotcode/#基础实现方法" class="headerlink" title="基础实现方法"></a>基础实现方法</h1><h2 id="1、安装-cordova-hot-code-push-cli"><a href="http://kaibin.me/2016/07/17/ionic-hotcode/#1、安装-cordova-hot-code-push-cli" class="headerlink" title="1、安装 cordova-hot-code-push-cli"></a>1、安装 <code>cordova-hot-code-push-cli</code></h2><p>使用命令安装</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g cordova-hot-code-push-cli</div></pre></td></tr></tbody></table></figure>
+<p>主要是生成检测配置文件，通常是在 <code>www</code> 目录下动态生成 <code>chcp.json</code> 和 <code>chcp.manifest</code> 生成两个文件，插件源码地址：</p>
+<blockquote>
+<p><a href="https://github.com/nordnet/cordova-hot-code-push" target="_blank" rel="external">https://github.com/nordnet/cordova-hot-code-push</a></p>
+</blockquote>
+<h2 id="2、创建项目"><a href="http://kaibin.me/2016/07/17/ionic-hotcode/#2、创建项目" class="headerlink" title="2、创建项目"></a>2、创建项目</h2><p>包含 <code>www</code> 目录的项目，已有项目无需重新创建</p>
+<h2 id="3、安装热更新插件"><a href="http://kaibin.me/2016/07/17/ionic-hotcode/#3、安装热更新插件" class="headerlink" title="3、安装热更新插件"></a>3、安装热更新插件</h2><p>使用命令安装</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ionic plugin add cordova-hot-code-push-plugin</div><div class="line"></div><div class="line">ionic plugin add cordova-hot-code-push-local-dev-addon</div></pre></td></tr></tbody></table></figure>
+<h2 id="4、打包封装"><a href="http://kaibin.me/2016/07/17/ionic-hotcode/#4、打包封装" class="headerlink" title="4、打包封装"></a>4、打包封装</h2><p>执行命令<code>cordova-hcp build</code>  或者  <code>cordova build</code></p>
+<h2 id="5、启动-hcp-server-服务"><a href="http://kaibin.me/2016/07/17/ionic-hotcode/#5、启动-hcp-server-服务" class="headerlink" title="5、启动 hcp server 服务"></a>5、启动 hcp server 服务</h2><p>重新打开一个终端窗口，cd到项目目录（包含www目录的父级目录）执行命令</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cordova-hcp server</div></pre></td></tr></tbody></table></figure>
+<p>稍等会在 <code>www</code> 目录下动态生成 <code>chcp.json</code> 和 <code>chcp.manifest</code> 生成两个文件</p>
+<h2 id="6、正常在运行完成前4步以后会在我们config-xml动态加入如图所示链接地址"><a href="http://kaibin.me/2016/07/17/ionic-hotcode/#6、正常在运行完成前4步以后会在我们config-xml动态加入如图所示链接地址" class="headerlink" title="6、正常在运行完成前4步以后会在我们config.xml动态加入如图所示链接地址"></a>6、正常在运行完成前4步以后会在我们config.xml动态加入如图所示链接地址</h2><p><a href="./【Ionic】Ionic实现iOS与Android端代码『热更新』与Android升级下载功能 （ v1.3.x版本 ）_files/14690048868722.jpg" class="fancybox" rel="group"><img src="./【Ionic】Ionic实现iOS与Android端代码『热更新』与Android升级下载功能 （ v1.3.x版本 ）_files/14690048868722.jpg" alt=""></a></p>
+<p><a href="./【Ionic】Ionic实现iOS与Android端代码『热更新』与Android升级下载功能 （ v1.3.x版本 ）_files/14690070343051.jpg" class="fancybox" rel="group"><img src="./【Ionic】Ionic实现iOS与Android端代码『热更新』与Android升级下载功能 （ v1.3.x版本 ）_files/14690070343051.jpg" alt=""></a></p>
+<p>图中链接地址<code>https://1980480f.ngrok.io/chcp.json</code>，修改为在第8步www目录里<code>chcp.json</code>文件可访问的地址：</p>
+<p>例如：<code>http://kaibin.me/hotcode/chcp.json</code></p>
+<h2 id="7、运行代码或打包我们的App"><a href="http://kaibin.me/2016/07/17/ionic-hotcode/#7、运行代码或打包我们的App" class="headerlink" title="7、运行代码或打包我们的App"></a>7、运行代码或打包我们的App</h2><h2 id="8、修改我们想要更新的代码"><a href="http://kaibin.me/2016/07/17/ionic-hotcode/#8、修改我们想要更新的代码" class="headerlink" title="8、修改我们想要更新的代码"></a>8、修改我们想要更新的代码</h2><p>然后修改 <code>chcp.json</code> 文件的 <code>content_url</code> ，此地址为我们项目放置的地址</p>
+<figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">{</div><div class="line">  <span class="attr">"autogenerated"</span>: <span class="literal">true</span>,</div><div class="line">  <span class="attr">"release"</span>: <span class="string">"2016.07.17-11.36.13"</span>,</div><div class="line">  <span class="attr">"content_url"</span>: <span class="string">"http://kaibin.me/hotcode"</span>,</div><div class="line">  <span class="attr">"update"</span>: <span class="string">"now"</span></div><div class="line">}</div></pre></td></tr></tbody></table></figure>
+<h2 id="9、将项目www目录代码上传到服务器可访问的目录里"><a href="http://kaibin.me/2016/07/17/ionic-hotcode/#9、将项目www目录代码上传到服务器可访问的目录里" class="headerlink" title="9、将项目www目录代码上传到服务器可访问的目录里"></a>9、将项目www目录代码上传到服务器可访问的目录里</h2><p>例如在服务器根目录创建<code>hotcode</code>命名的目录将项目www里的文件上传上去</p>
+<h2 id="10、-关闭我们的应用重新打开，看看代码是否更新成功"><a href="http://kaibin.me/2016/07/17/ionic-hotcode/#10、-关闭我们的应用重新打开，看看代码是否更新成功" class="headerlink" title="10、 关闭我们的应用重新打开，看看代码是否更新成功"></a>10、 关闭我们的应用重新打开，看看代码是否更新成功</h2><h1 id="优化流程"><a href="http://kaibin.me/2016/07/17/ionic-hotcode/#优化流程" class="headerlink" title="优化流程"></a>优化流程</h1><h2 id="1-创建cordova-hcp模板"><a href="http://kaibin.me/2016/07/17/ionic-hotcode/#1-创建cordova-hcp模板" class="headerlink" title="1.创建cordova-hcp模板"></a>1.创建cordova-hcp模板</h2><p>线上测试可卸载掉 <code>cordova-hot-code-push-local-dev-addon</code>防止每次自动更新新版本，可通过命令卸载：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cordova plugin remove cordova-hot-code-push-local-dev-addon</div></pre></td></tr></tbody></table></figure>
+<p>可以在 cordova 项目根目录下放一个 <code>cordova-hcp.json</code>，这是个模板文件<br>这样每次执行</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cordova-hcp build</div></pre></td></tr></tbody></table></figure>
+<p>就会利用这个模板生成新的 chcp.json，而不用手动更改 www/chcp.json了。<br>cordova-hcp.json内容如下：</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">{</div><div class="line">  <span class="string">"autogenerated"</span>: <span class="literal">true</span>,</div><div class="line">  <span class="string">"content_url"</span>: <span class="string">"http://kaibin.me/hotcode"</span>,</div><div class="line">  <span class="string">"min_native_interface"</span>: <span class="number">1</span>, <span class="comment">// app内核版本号</span></div><div class="line">  <span class="string">"ios_identifier"</span>: <span class="string">"https://itunes.apple.com/cn/app/***"</span>, <span class="comment">// iOS上线后的地址，用于内核版本更新后的确认跳转</span></div><div class="line">  <span class="string">"update"</span>: <span class="string">"now"</span></div><div class="line">}</div></pre></td></tr></tbody></table></figure>
+<h2 id="2-Build-options-build设置，配置开发环境、测试环境与生产环境"><a href="http://kaibin.me/2016/07/17/ionic-hotcode/#2-Build-options-build设置，配置开发环境、测试环境与生产环境" class="headerlink" title="2.Build options build设置，配置开发环境、测试环境与生产环境"></a>2.Build options build设置，配置开发环境、测试环境与生产环境</h2><ul>
+<li>在 /Cordova/Testproject/ 下创建 <code>chcpbuild.options</code> 文件，文件内容如下:</li>
+</ul>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">{</div><div class="line">  <span class="string">"dev"</span>: {</div><div class="line">    <span class="string">"config-file"</span>: <span class="string">"https://dev.kaibin.me/hotcode/www/chcp.json"</span></div><div class="line">  },</div><div class="line">  <span class="string">"production"</span>: {</div><div class="line">    <span class="string">"config-file"</span>: <span class="string">"https://kaibin.me/hotcode/chcp.json"</span></div><div class="line">  },</div><div class="line">  <span class="string">"QA"</span>: {</div><div class="line">    <span class="string">"config-file"</span>: <span class="string">"https://test.kaibin.me/hotcode/chcp.json"</span></div><div class="line">  }</div><div class="line">}</div></pre></td></tr></tbody></table></figure>
+<ul>
+<li>这样在build app的时候, 转为开发要用的服务器, 可执行:</li>
+</ul>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ionic build -- chcp-dev</div></pre></td></tr></tbody></table></figure>
+<p>结果就是, 特定拍下的 config.xml 文件(比如, /Cordova/TestProject/platforms/android/res/xml/config.xml) 变成了这样:</p>
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">chcp</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">config-file</span> <span class="attr">url</span>=<span class="string">"https://dev.kaibin.me/hotcode/chcp.json"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">chcp</span>&gt;</span></div></pre></td></tr></tbody></table></figure>
+<ul>
+<li>当我们需要上架app的时候 (Google Play, App Store) - 我们正常build:</li>
+</ul>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ionic build --release</div></pre></td></tr></tbody></table></figure>
+<p>这样 config.xml 不会改变</p>
+<p>如果没有使用 <code>chcpbuild.options</code> 插件会使用 <code>config.xml</code> 里面默认的值。</p>
+<p>文件必须位于 Cordova 项目根目录. 在这个文件里面，指定(JSON格式) 所有想改变 config.xml 文件的配置，源文件 config.xml (Cordova项目根目录) 不会发生变动, 改变的是 特定平台下的 config.xml  (在cordova build过程的 after_prepare 阶段)。</p>
+<h2 id="通过min-native-interface监控app是否提示更新"><a href="http://kaibin.me/2016/07/17/ionic-hotcode/#通过min-native-interface监控app是否提示更新" class="headerlink" title="通过min_native_interface监控app是否提示更新"></a>通过min_native_interface监控app是否提示更新</h2><p>所需最小的外壳app版本. 这是app的build版本号，是个整型数字, 不是应用商店中看到的形如”1.0.0”字符串。</p>
+<p>在 config.xml中，这样指定build版本号:</p>
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">chcp</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">native-interface</span> <span class="attr">version</span>=<span class="string">"1"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">config-file</span> <span class="attr">url</span>=<span class="string">"http://kaibin.me/hotcode/chcp.json"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">chcp</span>&gt;</span></div></pre></td></tr></tbody></table></figure>
+<p>与www目录下的chcp.json里面的<code>min_native_interface</code>数值相对应</p>
+<p>例如：app外壳里的config.xml是这样的：</p>
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">chcp</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">native-interface</span> <span class="attr">version</span>=<span class="string">"1"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">config-file</span> <span class="attr">url</span>=<span class="string">"http://kaibin.me/hotcode/chcp.json"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">chcp</span>&gt;</span></div></pre></td></tr></tbody></table></figure>
+<p>若服务器里的<code>min_native_interface</code>也对应是1，不会出现提示用户升级的状态，正常修改www目录的内容通过更新release值，可实现热更新。</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">{ </div><div class="line"> <span class="string">"autogenerated"</span>: <span class="literal">true</span>,</div><div class="line"> <span class="string">"content_url"</span>: <span class="string">"http://kaibin.me/hotcode"</span>, </div><div class="line"> <span class="string">"min_native_interface"</span>: <span class="number">1</span>, <span class="comment">// app内核版本号</span></div><div class="line"> <span class="string">"ios_identifier"</span>: <span class="string">"https://itunes.apple.com/cn/app/***"</span>, <span class="comment">// iOS上线后的地址，用于内核版本更新后的确认跳转</span></div><div class="line"> <span class="string">"release"</span>: <span class="string">"2017.07.17-12.22.11"</span>,</div><div class="line"> <span class="string">"update"</span>: <span class="string">"now"</span></div><div class="line">}</div></pre></td></tr></tbody></table></figure>
+<p>假设你的外壳app加了个新的插件，应该会更新外壳app。为了防止用户通过热更新下载了不适合他现有外壳app的web内容，你应该设置 min_native_interface 这个值</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">{ </div><div class="line"> <span class="string">"autogenerated"</span>: <span class="literal">true</span>,</div><div class="line"> <span class="string">"content_url"</span>: <span class="string">"http://kaibin.me/hotcode"</span>,</div><div class="line"> <span class="string">"min_native_interface"</span>: <span class="number">1</span>, <span class="comment">// app内核版本号</span></div><div class="line"> <span class="string">"ios_identifier"</span>: <span class="string">"https://itunes.apple.com/cn/app/***"</span>, <span class="comment">// iOS上线后的地址，用于内核版本更新后的确认跳转 </span></div><div class="line"> <span class="string">"release"</span>: <span class="string">"2017.07.17-12.28.21"</span>,</div><div class="line"> <span class="string">"min_native_interface"</span>: <span class="number">2</span>，</div><div class="line"> <span class="string">"update"</span>: <span class="string">"now"</span></div><div class="line">}</div></pre></td></tr></tbody></table></figure>
+<p>插件加载到这段json的时候, 发现 min_native_interface 比当前外壳app的build号要大，便不会下载web内容。而是触发一个<strong>chcp_updateLoadFailed</strong> 错误通知, 告诉用户需要升级外壳app了。</p>
+<h3 id="chcp-json中update字段含义"><a href="http://kaibin.me/2016/07/17/ionic-hotcode/#chcp-json中update字段含义" class="headerlink" title="chcp.json中update字段含义"></a>chcp.json中update字段含义</h3><p>指定了什么时候安装web内容更新，支持的值有：</p>
+<blockquote>
+<p>start - app启动时安装更新，默认值<br>resume - app从后台切换过来的时候安装更新<br>now - web内容下载完毕即安装更新</p>
+</blockquote>
+<h1 id="引导用户去应用商店更新外壳app或下载新版本"><a href="http://kaibin.me/2016/07/17/ionic-hotcode/#引导用户去应用商店更新外壳app或下载新版本" class="headerlink" title="引导用户去应用商店更新外壳app或下载新版本"></a>引导用户去应用商店更新外壳app或下载新版本</h1><p>通过给web更新设置最小支持的外壳app版本 <code>min_native_interface</code>。 如果插件检查发现用户安装的外壳app版本比服务端新的web内容要求的版本要低，就会触发错误事件，错误码：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chcp.error.APPLICATION_BUILD_VERSION_TOO_LOW</div></pre></td></tr></tbody></table></figure>
+<p>通过这个错误码可通过弹窗提示用户去升级，跳转到AppStore或下载新安装包（国内因GFW，跳转到google应用商店就算了＝ ＝）</p>
+<ul>
+<li><p>chcp.json 里增加<code>min_native_interface</code>的值</p>
+</li>
+<li><p>js端监听相应事件，并在出现错误的时候调用 chcp.requestApplicationUpdate 方法</p>
+</li>
+<li><p><a href="https://github.com/apache/cordova-plugin-file" target="_blank" rel="external">cordova-plugin-file</a>，<a href="https://github.com/apache/cordova-plugin-file-transfer" target="_blank" rel="external">cordova-plugin-file-transfer</a>，<a href="https://github.com/pwlin/cordova-plugin-file-opener2" target="_blank" rel="external">cordova-plugin-file-opener2</a>先把这几个插件安装好</p>
+<p>​</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> appUpdate = {</div><div class="line"></div><div class="line">        <span class="comment">// Application Constructor</span></div><div class="line">        initialize: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</div><div class="line">            <span class="keyword">this</span>.bindEvents();</div><div class="line">        },</div><div class="line"></div><div class="line">        <span class="comment">// Bind any events that are required.</span></div><div class="line">        <span class="comment">// Usually you should subscribe on 'deviceready' event to know, when you can start calling cordova modules</span></div><div class="line">        bindEvents: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</div><div class="line">            <span class="built_in">document</span>.addEventListener(<span class="string">'deviceready'</span>, <span class="keyword">this</span>.onDeviceReady, <span class="literal">false</span>);</div><div class="line">            <span class="built_in">document</span>.addEventListener(<span class="string">'chcp_updateLoadFailed'</span>, <span class="keyword">this</span>.onUpdateLoadError, <span class="literal">false</span>);</div><div class="line">        },</div><div class="line"></div><div class="line">        <span class="comment">// deviceready Event Handler</span></div><div class="line">        onDeviceReady: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</div><div class="line">        },</div><div class="line"></div><div class="line">        onUpdateLoadError: <span class="function"><span class="keyword">function</span>(<span class="params">eventData</span>) </span>{</div><div class="line">            <span class="keyword">var</span> error = eventData.detail.error;</div><div class="line">            </div><div class="line">            <span class="comment">// 当检测出内核版本过小</span></div><div class="line">            <span class="keyword">if</span> (error &amp;&amp; error.code == chcp.error.APPLICATION_BUILD_VERSION_TOO_LOW) {</div><div class="line">                <span class="keyword">var</span> dialogMessage = <span class="string">'有新的版本,请下载更新'</span>;</div><div class="line">                </div><div class="line">                <span class="comment">// iOS端 直接弹窗提示升级，点击ok后自动跳转</span></div><div class="line">                <span class="keyword">if</span>(ionic.Platform.isIOS()){</div><div class="line">                    chcp.requestApplicationUpdate(dialogMessage, <span class="keyword">this</span>.userWentToStoreCallback, <span class="keyword">this</span>.userDeclinedRedirectCallback);</div><div class="line">                <span class="comment">// Android端 提示升级下载最新APK文件</span></div><div class="line">                }<span class="keyword">else</span> <span class="keyword">if</span>(ionic.Platform.isAndroid()){</div><div class="line"></div><div class="line">                    <span class="keyword">var</span> confirmPopup = $ionicPopup.confirm({</div><div class="line">                        template: <span class="string">'有新的版本,请下载更新'</span>,</div><div class="line">                        cssClass: <span class="string">'popup'</span>,</div><div class="line">                        cancelText:<span class="string">'取消'</span>,</div><div class="line">                        okText:<span class="string">'升级'</span></div><div class="line">                    });</div><div class="line">                    confirmPopup.then(<span class="function"><span class="keyword">function</span> (<span class="params">res</span>) </span>{</div><div class="line">                        <span class="keyword">if</span> (res) {</div><div class="line">                            $ionicLoading.show({</div><div class="line">                                template: <span class="string">"已经下载：0%"</span></div><div class="line">                            });</div><div class="line">                            <span class="built_in">window</span>.resolveLocalFileSystemURL(cordova.file.externalRootDirectory, <span class="function"><span class="keyword">function</span>(<span class="params">fileEntry</span>) </span>{</div><div class="line">                                fileEntry.getDirectory(<span class="string">"***(app名称)"</span>, { create: <span class="literal">true</span>, exclusive: <span class="literal">false</span> }, <span class="function"><span class="keyword">function</span> (<span class="params">fileEntry</span>) </span>{</div><div class="line">                                    <span class="comment">//下载代码</span></div><div class="line">                                    <span class="keyword">var</span> fileTransfer = <span class="keyword">new</span> FileTransfer();</div><div class="line">                                    fileTransfer.download(<span class="string">"app下载地址"</span>, fileEntry.toInternalURL()+<span class="string">"***(app名称).apk"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">entry</span>) </span>{</div><div class="line">                                        <span class="comment">// 打开下载下来的APP</span></div><div class="line">                                        cordova.plugins.fileOpener2.open(</div><div class="line">                                            entry.toInternalURL(),<span class="comment">//下载文件保存地址</span></div><div class="line">                                            <span class="string">'application/vnd.android.package-archive'</span>, {<span class="comment">//以APK文件方式打开</span></div><div class="line">                                                error: <span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>{</div><div class="line">                                                },</div><div class="line">                                                success: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{}</div><div class="line">                                            });</div><div class="line">                                    }, <span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>{</div><div class="line">                                    },<span class="literal">true</span>);</div><div class="line"></div><div class="line">                                    fileTransfer.onprogress = <span class="function"><span class="keyword">function</span>(<span class="params">progressEvent</span>) </span>{</div><div class="line">                                        $timeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{</div><div class="line">                                            <span class="keyword">var</span> downloadProgress = (progressEvent.loaded / progressEvent.total) * <span class="number">100</span>;</div><div class="line">                                            $ionicLoading.show({</div><div class="line">                                                template: <span class="string">"已经下载："</span> + <span class="built_in">Math</span>.floor(downloadProgress) + <span class="string">"%"</span></div><div class="line">                                            });</div><div class="line">                                            <span class="keyword">if</span> (downloadProgress &gt; <span class="number">99</span>) {</div><div class="line">                                                $ionicLoading.hide();</div><div class="line">                                            }</div><div class="line">                                        });</div><div class="line">                                    };</div><div class="line"></div><div class="line">                                },<span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>{alert(<span class="string">"创建失败"</span>)});</div><div class="line">                            });</div><div class="line">                        }</div><div class="line">                    });</div><div class="line">                }</div><div class="line">            }</div><div class="line">        },</div><div class="line"></div><div class="line">        userWentToStoreCallback: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</div><div class="line">            <span class="comment">// user went to the store from the dialog</span></div><div class="line">        },</div><div class="line"></div><div class="line">        userDeclinedRedirectCallback: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</div><div class="line">            <span class="comment">// User didn't want to leave the app.</span></div><div class="line">            <span class="comment">// Maybe he will update later.</span></div><div class="line">        }</div><div class="line">    };</div><div class="line"></div><div class="line">    appUpdate.initialize();</div></pre></td></tr></tbody></table></figure>
+<h1 id="iOS与Android的出现的问题"><a href="http://kaibin.me/2016/07/17/ionic-hotcode/#iOS与Android的出现的问题" class="headerlink" title="iOS与Android的出现的问题"></a>iOS与Android的出现的问题</h1><p>在build ios的app时<code>config.xml</code>的</p>
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">name</span>&gt;</span>***<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div></pre></td></tr></tbody></table></figure>
+<p>name不可使用中文，设置app名称为中文，可通过Xcode修改Resources目录下的<code>***-Info.plist</code>内的<code>Bundle display name</code>字段即可</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="http://kaibin.me/tags/ionic/" rel="tag">#ionic</a>
+          
+            <a href="http://kaibin.me/tags/iOS/" rel="tag">#iOS</a>
+          
+            <a href="http://kaibin.me/tags/Android/" rel="tag">#Android</a>
+          
+            <a href="http://kaibin.me/tags/cordova/" rel="tag">#cordova</a>
+          
+            <a href="http://kaibin.me/tags/%E7%83%AD%E6%9B%B4%E6%96%B0/" rel="tag">#热更新</a>
+          
+            <a href="http://kaibin.me/tags/%E5%8D%87%E7%BA%A7%E4%B8%8B%E8%BD%BD/" rel="tag">#升级下载</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="http://kaibin.me/2015/12/17/react-native-build/" rel="next" title="【ReactNative】Mac平台 ReactNative iOS&amp;Android 开发环境搭建总结">
+                <i class="fa fa-chevron-left"></i> 【ReactNative】Mac平台 ReactNative iOS&amp;Android 开发环境搭建总结
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/07/17/ionic-hotcode/" data-title="【Ionic】Ionic实现iOS与Android端代码『热更新』与Android升级下载功能 （ v1.3.x版本 ）" data-content="" data-url="http://kaibin.me/2016/07/17/ionic-hotcode/">
+  <div class="ds-share-inline">
+    <ul class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/07/17/ionic-hotcode/" data-title="【Ionic】Ionic实现iOS与Android端代码『热更新』与Android升级下载功能 （ v1.3.x版本 ）" data-url="http://kaibin.me/2016/07/17/ionic-hotcode/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first" style="top: 5px; transform: rotateZ(-45deg); width: 100%;"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle" style="opacity: 0;"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last" style="top: -5px; transform: rotateZ(45deg); width: 100%;"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar sidebar-active" style="display: block; width: 320px;">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element" style="opacity: 1; display: block; transform: translateX(0px);">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person" style="opacity: 1; display: block; transform: translateX(0px);">
+          <img class="site-author-image" itemprop="image" src="./【Ionic】Ionic实现iOS与Android端代码『热更新』与Android升级下载功能 （ v1.3.x版本 ）_files/avatar.gif" alt="Kai">
+          <p class="site-author-name" itemprop="name">Kai</p>
+          <p class="site-description motion-element" itemprop="description" style="opacity: 1; display: block; transform: translateX(0px);">Kai's Blog</p>
+        </div>
+        <nav class="site-state motion-element" style="opacity: 1; display: block; transform: translateX(0px);">
+          <div class="site-state-item site-state-posts">
+            <a href="http://kaibin.me/archives">
+              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="http://kaibin.me/categories">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="http://kaibin.me/tags">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element" style="opacity: 1; display: block; transform: translateX(0px);">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active" style="opacity: 1; display: block; transform: translateX(0px);">
+          <div class="post-toc" style="max-height: 799px; width: calc(100% + 21px);">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="http://kaibin.me/2016/07/17/ionic-hotcode/#热更新的好处"><span class="nav-number">1.</span> <span class="nav-text">热更新的好处</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="http://kaibin.me/2016/07/17/ionic-hotcode/#热更新实现原理"><span class="nav-number">2.</span> <span class="nav-text">热更新实现原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="http://kaibin.me/2016/07/17/ionic-hotcode/#基础实现方法"><span class="nav-number">3.</span> <span class="nav-text">基础实现方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="http://kaibin.me/2016/07/17/ionic-hotcode/#1、安装-cordova-hot-code-push-cli"><span class="nav-number">3.1.</span> <span class="nav-text">1、安装 cordova-hot-code-push-cli</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="http://kaibin.me/2016/07/17/ionic-hotcode/#2、创建项目"><span class="nav-number">3.2.</span> <span class="nav-text">2、创建项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="http://kaibin.me/2016/07/17/ionic-hotcode/#3、安装热更新插件"><span class="nav-number">3.3.</span> <span class="nav-text">3、安装热更新插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="http://kaibin.me/2016/07/17/ionic-hotcode/#4、打包封装"><span class="nav-number">3.4.</span> <span class="nav-text">4、打包封装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="http://kaibin.me/2016/07/17/ionic-hotcode/#5、启动-hcp-server-服务"><span class="nav-number">3.5.</span> <span class="nav-text">5、启动 hcp server 服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="http://kaibin.me/2016/07/17/ionic-hotcode/#6、正常在运行完成前4步以后会在我们config-xml动态加入如图所示链接地址"><span class="nav-number">3.6.</span> <span class="nav-text">6、正常在运行完成前4步以后会在我们config.xml动态加入如图所示链接地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="http://kaibin.me/2016/07/17/ionic-hotcode/#7、运行代码或打包我们的App"><span class="nav-number">3.7.</span> <span class="nav-text">7、运行代码或打包我们的App</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="http://kaibin.me/2016/07/17/ionic-hotcode/#8、修改我们想要更新的代码"><span class="nav-number">3.8.</span> <span class="nav-text">8、修改我们想要更新的代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="http://kaibin.me/2016/07/17/ionic-hotcode/#9、将项目www目录代码上传到服务器可访问的目录里"><span class="nav-number">3.9.</span> <span class="nav-text">9、将项目www目录代码上传到服务器可访问的目录里</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="http://kaibin.me/2016/07/17/ionic-hotcode/#10、-关闭我们的应用重新打开，看看代码是否更新成功"><span class="nav-number">3.10.</span> <span class="nav-text">10、 关闭我们的应用重新打开，看看代码是否更新成功</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="http://kaibin.me/2016/07/17/ionic-hotcode/#优化流程"><span class="nav-number">4.</span> <span class="nav-text">优化流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="http://kaibin.me/2016/07/17/ionic-hotcode/#1-创建cordova-hcp模板"><span class="nav-number">4.1.</span> <span class="nav-text">1.创建cordova-hcp模板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="http://kaibin.me/2016/07/17/ionic-hotcode/#2-Build-options-build设置，配置开发环境、测试环境与生产环境"><span class="nav-number">4.2.</span> <span class="nav-text">2.Build options build设置，配置开发环境、测试环境与生产环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="http://kaibin.me/2016/07/17/ionic-hotcode/#通过min-native-interface监控app是否提示更新"><span class="nav-number">4.3.</span> <span class="nav-text">通过min_native_interface监控app是否提示更新</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="http://kaibin.me/2016/07/17/ionic-hotcode/#chcp-json中update字段含义"><span class="nav-number">4.3.1.</span> <span class="nav-text">chcp.json中update字段含义</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="http://kaibin.me/2016/07/17/ionic-hotcode/#引导用户去应用商店更新外壳app或下载新版本"><span class="nav-number">5.</span> <span class="nav-text">引导用户去应用商店更新外壳app或下载新版本</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="http://kaibin.me/2016/07/17/ionic-hotcode/#iOS与Android的出现的问题"><span class="nav-number">6.</span> <span class="nav-text">iOS与Android的出现的问题</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  ©  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kai</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io/">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="./【Ionic】Ionic实现iOS与Android端代码『热更新』与Android升级下载功能 （ v1.3.x版本 ）_files/index.js.下载"></script>
+
+  
+  <script type="text/javascript" src="./【Ionic】Ionic实现iOS与Android端代码『热更新』与Android升级下载功能 （ v1.3.x版本 ）_files/fastclick.min.js.下载"></script>
+
+  
+  <script type="text/javascript" src="./【Ionic】Ionic实现iOS与Android端代码『热更新』与Android升级下载功能 （ v1.3.x版本 ）_files/jquery.lazyload.js.下载"></script>
+
+  
+  <script type="text/javascript" src="./【Ionic】Ionic实现iOS与Android端代码『热更新』与Android升级下载功能 （ v1.3.x版本 ）_files/velocity.min.js.下载"></script>
+
+  
+  <script type="text/javascript" src="./【Ionic】Ionic实现iOS与Android端代码『热更新』与Android升级下载功能 （ v1.3.x版本 ）_files/velocity.ui.min.js.下载"></script>
+
+  
+  <script type="text/javascript" src="./【Ionic】Ionic实现iOS与Android端代码『热更新』与Android升级下载功能 （ v1.3.x版本 ）_files/jquery.fancybox.pack.js.下载"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="./【Ionic】Ionic实现iOS与Android端代码『热更新』与Android升级下载功能 （ v1.3.x版本 ）_files/utils.js.下载"></script>
+
+  <script type="text/javascript" src="./【Ionic】Ionic实现iOS与Android端代码『热更新』与Android升级下载功能 （ v1.3.x版本 ）_files/motion.js.下载"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="./【Ionic】Ionic实现iOS与Android端代码『热更新』与Android升级下载功能 （ v1.3.x版本 ）_files/scrollspy.js.下载"></script>
+<script type="text/javascript" src="./【Ionic】Ionic实现iOS与Android端代码『热更新』与Android升级下载功能 （ v1.3.x版本 ）_files/post-details.js.下载"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="./【Ionic】Ionic实现iOS与Android端代码『热更新』与Android升级下载功能 （ v1.3.x版本 ）_files/bootstrap.js.下载"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"kaibin"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="./【Ionic】Ionic实现iOS与Android端代码『热更新』与Android升级下载功能 （ v1.3.x版本 ）_files/ua-parser.min.js.下载"></script>
+    <script src="./【Ionic】Ionic实现iOS与Android端代码『热更新』与Android升级下载功能 （ v1.3.x版本 ）_files/hook-duoshuo.js.下载"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+
+
+</body></html>
