@@ -9,10 +9,11 @@
 
     ```
         create tablespace 表间名 datafile '数据文件名' size 表空间大小
-
-        create tablespace NNDJ_CMS logging datafile 'E:\oracledb\oradata\orcl\nndj_cms.dbf' size 125m autoextend off;
-
-        临时表空间：create temporary tablespace gx_fda_www_temp tempfile 'E:\oracledb\oradata\orcl\gx_fda_www_temp.dbf' size 125m autoextend off;
+        临时表空间：
+        create temporary tablespace 临时表空间名 tempfile 文件路径 size 大小 autoextend off;
+        列：
+        create tablespace GX_FDA_AUDIT logging datafile 'E:\oracledb\oradata\orcl\GX_FDA_AUDIT.dbf' size 125m autoextend off;
+        create temporary tablespace gx_fda_audit_temp tempfile 'E:\oracledb\oradata\orcl\gx_fda_audit_temp.dbf' size 125m autoextend off;
     ```
 
 - 建好tablespace, 就可以建用户了
@@ -20,7 +21,7 @@
     ```
         create user 用户名 identified by 密码 default tablespace 表空间表;
 
-        create user gx_fda_www identified by 123456 default tablespace gx_fda_www temporary tablespace gx_fda_www_temp;
+        create user GX_FDA_AUDIT identified by 123456 default tablespace GX_FDA_AUDIT temporary tablespace gx_fda_audit_temp;
 
     ```
 
@@ -39,7 +40,7 @@
 - 授权用户 若要创建跨用户的视图则要加入 select any table 的权限
 
     ```
-        grant connect,resource,dba,select any table,drop any synonym to gx_fda_www;
+        grant connect,resource,dba,select any table,drop any synonym to GX_FDA_AUDIT;
     ```
 
 - 加大空间
@@ -98,7 +99,7 @@
 	在linux命令中输入
 	expdp 用户名/密码 directory=DATA_PUMP_DIR dumpfile=文件名.dump schemas=表空间
 	如
-	expdp NNDJ_CMS/123456 directory=DATA_PUMP_DIR dumpfile=GGFDA2017060901.dump schemas=NNDJ_CMS
+	expdp GX_FDA_AUDIT/123456 directory=DATA_PUMP_DIR dumpfile=GX_FDA_AUDIT2017062201.dump schemas=GX_FDA_AUDIT
 
 - exp
 
@@ -107,13 +108,16 @@
 4.导入
 
 - impdp
+
 	登录目标服务器
 	把dump文件拷到数据库文件路径下
 	输入：
 	su - oracle
 	impdp 用户名/密码 directory=DATA_PUMP_DIR dumpfile=文件名.dump table_exists_action=replace schemas=表空间
 	如
-	impdp LZ_FDA_DATACENTER/123456 directory=DATA_PUMP_DIR dumpfile=LZ_FDA_DATACENTER2017060301.dump table_exists_action=replace schemas=LZ_FDA_DATACENTER,LZFDA_DC_EXCHANGE,LZ_FDA_AIPCASE,LZ_FDA_CMS,LZ_FDA_REPORT,LZ_FDA_SAFE,LZ_FDA_SUPEXA,LZ_FDA_SYS
+	impdp GX_FDA_APP/123456 directory=DATA_PUMP_DIR dumpfile=GX_FDA_APP2017062201.dump table_exists_action=replace schemas=GX_FDA_APP
+	impdp GX_FDA_AUDIT/123456 directory=DATA_PUMP_DIR dumpfile=GX_FDA_AUDIT2017062201.dump table_exists_action=replace schemas=GX_FDA_AUDIT
 
 - imp
+
 	imp userid=NNDJ_CMS/123456 file=E:\oracledb\admin\orcl\dpdump\NNDJ_CMS2017061202.dmp fromuser=NNDJ_CMS touser=NNDJ_CMS

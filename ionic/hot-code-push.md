@@ -1,6 +1,6 @@
 # cordova 热更新
 
-- 参考blog/【Ionic】Ionic实现iOS与Android端代码『热更新』与Android升级下载功能 （ v1.3.x版本 ）.html
+- 参考hcp/【Ionic】Ionic实现iOS与Android端代码『热更新』与Android升级下载功能 （ v1.3.x版本 ）.html
 
 1. 安装 cordova-hot-code-push-cli
 
