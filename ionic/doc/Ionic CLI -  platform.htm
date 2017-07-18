@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)http://ionicframework.com/docs/cli/cordova/platform/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>
+    
+    
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="./Ionic CLI Documentation - cordova platform_files/styles.css" rel="stylesheet">
+
+
+  <title>Ionic CLI Documentation - cordova platform</title>
+
+
+<meta name="author" content="Drifty">
+<meta name="description" content="Ionic lets developers build beautiful and interactive mobile apps using HTML5 and AngularJS.">
+<meta name="keywords" content="html5,javascript,mobile,drifty,ionic,hybrid,phonegap,cordova,native,ios,android,angularjs">
+<link rel="canonical" href="https://ionicframework.com/docs/cli/cordova/platform/">
+
+<!-- Social: Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@ionicframework">
+<meta name="twitter:creator" content="ionicframework">
+<meta name="twitter:title" content="Ionic Framework">
+<meta name="twitter:description" content="The easiest way to build amazing mobile and progressive web apps. 100% free and open source.">
+<meta name="twitter:image:src" content="https://ionicframework.com/img/ionic-meta.jpg">
+
+<!-- Social: Facebook / Open Graph -->
+<meta property="fb:app_id" content="1321836767955949">
+<meta property="og:url" content="https://ionicframework.com/docs/cli/cordova/platform/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ionic Framework">
+<meta property="og:image" content="https://ionicframework.com/img/ionic-meta.jpg">
+<meta property="og:description" content="The easiest way to build amazing mobile and progressive web apps. 100% free and open source.">
+<meta property="og:site_name" content="Ionic Framework">
+<meta property="article:publisher" content="https://www.facebook.com/ionicframework">
+
+<link rel="apple-touch-icon" sizes="57x57" href="http://ionicframework.com/img/meta/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="http://ionicframework.com/img/meta/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="http://ionicframework.com/img/meta/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="http://ionicframework.com/img/meta/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="http://ionicframework.com/img/meta/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="http://ionicframework.com/img/meta/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="http://ionicframework.com/img/meta/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="http://ionicframework.com/img/meta/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="http://ionicframework.com/img/meta/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="http://ionicframework.com/img/meta/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="http://ionicframework.com/img/meta/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="http://ionicframework.com/img/meta/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="http://ionicframework.com/img/meta/favicon-192x192.png" sizes="192x192">
+<link rel="manifest" href="http://ionicframework.com/manifest.json">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-TileImage" content="/img/meta/ms-icon-70x70.png">
+<meta name="msapplication-TileImage" content="/img/meta/ms-icon-144x144.png">
+<meta name="theme-color" content="#4c8fff">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+
+  </head>
+  <body id="docs-page-cli-cordova-platform" class="v2 docs fluid page-cli-cordova-platform has-snap ng-scope" data-spy="scroll" data-offset="100" data-target="#components-index" ng-app="IonicSite">
+
+    
+      <div id="snap-bar">
+        Check out
+        <a href="http://ionicframework.com/enterprise" style="color: #fff">
+          <b>Ionic Enterprise</b>
+          <i class="ion-md-arrow-forward"></i>
+        </a>
+      </div>
+      <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" id="collapse-toggle" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <i class="ion-md-more"></i>
+      </button>
+      <button type="button" class="sidebar-toggle collapsed" id="sidebar-toggle">
+        <span class="sr-only">Toggle sidebar</span>
+        <i class="ion-md-menu"></i>
+        <i class="ion-md-close"></i>
+      </button>
+      <a class="navbar-brand logo" href="http://ionicframework.com/">
+        <img src="./Ionic CLI Documentation - cordova platform_files/ionic-docs-icon.png" id="ionic-docs-logo">
+        <img src="./Ionic CLI Documentation - cordova platform_files/ionic-docs-icon-back.png" id="ionic-docs-back">
+      </a>
+      <a class="navbar-brand" href="http://ionicframework.com/docs/">
+        <img src="./Ionic CLI Documentation - cordova platform_files/ionic-docs-type.png" id="ionic-docs-text">
+      </a>
+      <ul class="version">
+        <li class="dropdown">
+          <a href="http://ionicframework.com/docs/cli/cordova/platform/#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="http://ionicframework.com/docs/cli/cordova/platform/#" class="active">
+                Current Framework Docs <i class="ion-ios-checkmark"></i>
+              </a>
+            </li>
+            <li><a href="http://ionicframework.com/docs/v1">v1 Framework Docs</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-collapse">
+      
+      <form class="navbar-form navbar-left ng-pristine ng-valid" role="search" data-searchpos="header">
+        <div class="form-group">
+          <input type="text" class="form-control search-input ng-pristine ng-untouched ng-valid" placeholder="Search" data-searchpos="header" ng-model="searchTerm">
+        </div>
+      </form>
+      
+      <ul class="nav navbar-nav navbar-left">
+        <li><a href="http://ionicframework.com/">Framework</a></li>
+<li><a href="http://ionicframework.com/products/">
+  Products</a></li>
+<li class="sm-hide"><a target="_blank" href="http://showcase.ionicframework.com/">Showcase</a></li>
+<li class="sm-hide"><a href="http://blog.ionic.io/">Blog</a></li>
+<li class="active"><a href="http://ionicframework.com/developers/">Docs</a></li>
+
+<li class="dropdown">
+  <a href="http://ionicframework.com/docs/cli/cordova/platform/#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+    Support <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu">
+    <li><a href="http://ionicframework.com/getting-started/">Getting Started</a></li>
+    <li class="hide-sm"><a href="https://forum.ionicframework.com/">
+      Community Forum</a></li>
+    <li class="divider"></li>
+    <li><a href="http://ionicframework.com/support">Customer Support</a></li>
+    <li><a href="http://ionicframework.com/trusted-partners">Trusted Partners</a></li>
+  </ul>
+</li>
+
+<li class="dropdown">
+  <a href="http://ionicframework.com/docs/cli/cordova/platform/#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+    Ecosystem <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu">
+    <li><a target="_blank" href="https://market.ionic.io/">Market</a></li>
+    <li><a target="_blank" href="https://jobs.ionic.io/">Jobs</a></li>
+    <li><a target="_blank" href="https://shop.ionic.io/">Shop</a></li>
+    <li><a target="_blank" href="https://ionic.io/products/creator">Creator</a></li>
+    <li class="divider"></li>
+    <li><a target="_blank" href="https://twitter.com/IonicFramework">
+      Twitter</a></li>
+    <li><a target="_blank" href="http://ionicworldwide.herokuapp.com/">
+      Slack</a></li>
+    <li><a target="_blank" href="https://github.com/ionic-team/ionic">
+      GitHub</a></li>
+  </ul>
+</li>
+
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="sm-hide">
+          <a href="https://apps.ionic.io/login" class="header-btn">Log in</a>
+        </li>
+        <li class="header-btn-white">
+          <a href="https://apps.ionic.io/signup">Sign up</a>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+    
+
+    <div class="docs-container">
+  <nav class="side-nav" id="side-nav">
+    <form class="form-group search ng-pristine ng-valid" role="search">
+      <input type="text" class="form-control search-input ng-pristine ng-untouched ng-valid" placeholder="Search" data-searchpos="sidebar" ng-model="searchTerm">
+    </form>
+    
+      <ul ng-controller="DocsNavCtrl" class="ng-scope">
+
+  
+  <li class="">
+    <a href="http://ionicframework.com/docs/">Home</a>
+  </li>
+
+  
+  <li class="">
+    <a ng-click="showIntro = !showIntro">Intro</a>
+    <ul ng-show="showIntro" class="ng-hide">
+      <li class="">
+        <a href="http://ionicframework.com/docs/intro/installation">Installation</a>
+      </li>
+      <li class="">
+        <a href="http://ionicframework.com/docs/intro/tutorial">Tutorial</a>
+      </li>
+      <li class="">
+        <a href="http://ionicframework.com/docs/intro/deploying">Deploying</a>
+      </li>
+      <li class="">
+        <a href="http://ionicframework.com/docs/intro/migration">Migration</a>
+      </li>
+      <li class="">
+        <a href="http://ionicframework.com/docs/intro/concepts">Concepts</a>
+      </li>
+    </ul>
+  </li>
+
+  
+
+ 
+  <li id="components-index" class="">
+    <a ng-click="showComponents = !showComponents">Components</a>
+    <ul class="nav ng-hide" ng-show="showComponents">
+      <li><a href="http://ionicframework.com/docs/components/#overview">Overview</a></li>
+      <li><a href="http://ionicframework.com/docs/components/#action-sheets">Action Sheets</a></li>
+
+      <li id="components-alerts"><a href="http://ionicframework.com/docs/components/#alert">Alerts</a></li>
+        <ul class="nav">
+          <li class="nav-item-hidden"><a href="http://ionicframework.com/docs/components/#alert-confirm"></a></li>
+          <li class="nav-item-hidden"><a href="http://ionicframework.com/docs/components/#alert-prompt"></a></li>
+          <li class="nav-item-hidden"><a href="http://ionicframework.com/docs/components/#alert-radio"></a></li>
+          <li class="nav-item-hidden"><a href="http://ionicframework.com/docs/components/#alert-checkbox"></a></li>
+        </ul>
+
+      <li><a href="http://ionicframework.com/docs/components/#badges">Badges</a></li>
+
+      <li id="components-buttons"><a href="http://ionicframework.com/docs/components/#buttons">Buttons</a></li>
+        <ul class="nav">
+          <li class="nav-item-hidden"><a href="http://ionicframework.com/docs/components/#outline-buttons"></a></li>
+          <li class="nav-item-hidden"><a href="http://ionicframework.com/docs/components/#clear-buttons"></a></li>
+          <li class="nav-item-hidden"><a href="http://ionicframework.com/docs/components/#round-buttons"></a></li>
+          <li class="nav-item-hidden"><a href="http://ionicframework.com/docs/components/#block-buttons"></a></li>
+          <li class="nav-item-hidden"><a href="http://ionicframework.com/docs/components/#full-buttons"></a></li>
+          <li class="nav-item-hidden"><a href="http://ionicframework.com/docs/components/#button-sizes"></a></li>
+          <li class="nav-item-hidden"><a href="http://ionicframework.com/docs/components/#icon-buttons"></a></li>
+          <li class="nav-item-hidden"><a href="http://ionicframework.com/docs/components/#buttons-in-components"></a></li>
+        </ul>
+
+      <li id="components-cards"><a href="http://ionicframework.com/docs/components/#cards">Cards</a></li>
+        <ul class="nav">
+          <li class="nav-item-hidden"><a href="http://ionicframework.com/docs/components/#card-header"></a></li>
+          <li class="nav-item-hidden"><a href="http://ionicframework.com/docs/components/#card-list"></a></li>
+          <li class="nav-item-hidden"><a href="http://ionicframework.com/docs/components/#card-image"></a></li>
+          <li class="nav-item-hidden"><a href="http://ionicframework.com/docs/components/#card-background"></a></li>
+          <li class="nav-item-hidden"><a href="http://ionicframework.com/docs/components/#advanced-cards"></a></li>
+          <li class="nav-item-hidden"><a href="http://ionicframework.com/docs/components/#card-advanced-social"></a></li>
+          <li class="nav-item-hidden"><a href="http://ionicframework.com/docs/components/#card-advanced-map"></a></li>
+          <li class="nav-item-hidden"><a href="http://ionicframework.com/docs/components/#card-advanced-weather"></a></li>
+        </ul>
+
+      <li><a href="http://ionicframework.com/docs/components/#checkbox">Checkbox</a></li>
+
+      <li><a href="http://ionicframework.com/docs/components/#datetime">DateTime</a></li>
+
+      <li><a href="http://ionicframework.com/docs/components/#fabs">FABs</a></li>
+
+      <li><a href="http://ionicframework.com/docs/components/#gestures">Gestures</a></li>
+
+      <li><a href="http://ionicframework.com/docs/components/#grid">Grid</a></li>
+      <li><a href="http://ionicframework.com/docs/components/#icons">Icons</a></li>
+
+      <li id="components-forms"><a href="http://ionicframework.com/docs/components/#inputs">Inputs</a></li>
+        <ul class="nav">
+          <li class="nav-item-hidden"><a href="http://ionicframework.com/docs/components/#fixed-inline-labels"></a></li>
+          <li class="nav-item-hidden"><a href="http://ionicframework.com/docs/components/#floating-labels"></a></li>
+          <li class="nav-item-hidden"><a href="http://ionicframework.com/docs/components/#inline-labels"></a></li>
+          <li class="nav-item-hidden"><a href="http://ionicframework.com/docs/components/#inset-labels"></a></li>
+          <li class="nav-item-hidden"><a href="http://ionicframework.com/docs/components/#placeholder-labels"></a></li>
+          <li class="nav-item-hidden"><a href="http://ionicframework.com/docs/components/#stacked-labels"></a></li>
+        </ul>
+
+      <li id="components-lists"><a href="http://ionicframework.com/docs/components/#lists">Lists</a></li>
+        <ul class="nav">
+          <li class="nav-item-hidden"><a href="http://ionicframework.com/docs/components/#list-lines"></a></li>
+          <li class="nav-item-hidden"><a href="http://ionicframework.com/docs/components/#list-no-lines"></a></li>
+          <li class="nav-item-hidden"><a href="http://ionicframework.com/docs/components/#inset-list"></a></li>
+          <li class="nav-item-hidden"><a href="http://ionicframework.com/docs/components/#list-dividers"></a></li>
+          <li class="nav-item-hidden"><a href="http://ionicframework.com/docs/components/#list-headers"></a></li>
+          <li class="nav-item-hidden"><a href="http://ionicframework.com/docs/components/#icon-list"></a></li>
+          <li class="nav-item-hidden"><a href="http://ionicframework.com/docs/components/#avatar-list"></a></li>
+          <li class="nav-item-hidden"><a href="http://ionicframework.com/docs/components/#thumbnail-list"></a></li>
+          <li class="nav-item-hidden"><a href="http://ionicframework.com/docs/components/#sliding-list"></a></li>
+          <li class="nav-item-hidden"><a href="http://ionicframework.com/docs/components/#multiline-list"></a></li>
+        </ul>
+
+
+      <li><a href="http://ionicframework.com/docs/components/#loading">Loading</a></li>
+      <li><a href="http://ionicframework.com/docs/components/#menus">Menus</a></li>
+      <li><a href="http://ionicframework.com/docs/components/#modals">Modals</a></li>
+      <li><a href="http://ionicframework.com/docs/components/#navigation">Navigation</a></li>
+      <li><a href="http://ionicframework.com/docs/components/#popovers">Popover</a></li>
+      <li><a href="http://ionicframework.com/docs/components/#radio">Radio</a></li>
+      <li><a href="http://ionicframework.com/docs/components/#range">Range</a></li>
+      <li><a href="http://ionicframework.com/docs/components/#searchbar">Searchbar</a></li>
+      <li><a href="http://ionicframework.com/docs/components/#segment">Segment</a></li>
+      <li><a href="http://ionicframework.com/docs/components/#select">Select</a></li>
+      <li><a href="http://ionicframework.com/docs/components/#slides">Slides</a></li>
+
+      <li id="components-tabs"><a href="http://ionicframework.com/docs/components/#tabs">Tabs</a></li>
+        <ul class="nav">
+          <li class="nav-item-hidden"><a href="http://ionicframework.com/docs/components/#tabs-icon"></a></li>
+          <li class="nav-item-hidden"><a href="http://ionicframework.com/docs/components/#tabs-icon-text"></a></li>
+          <li class="nav-item-hidden"><a href="http://ionicframework.com/docs/components/#tabs-badges"></a></li>
+        </ul>
+
+      <li><a href="http://ionicframework.com/docs/components/#toast">Toast</a></li>
+      <li><a href="http://ionicframework.com/docs/components/#toggle">Toggle</a></li>
+
+      <li id="components-toolbar"><a href="http://ionicframework.com/docs/components/#toolbar">Toolbar</a></li>
+        <ul class="nav">
+          <li class="nav-item-hidden"><a href="http://ionicframework.com/docs/components/#toolbar-buttons"></a></li>
+          <li class="nav-item-hidden"><a href="http://ionicframework.com/docs/components/#toolbar-segment"></a></li>
+          <li class="nav-item-hidden"><a href="http://ionicframework.com/docs/components/#toolbar-searchbar"></a></li>
+          <li class="nav-item-hidden"><a href="http://ionicframework.com/docs/components/#toolbar-colors"></a></li>
+        </ul>
+
+    </ul>
+  </li>
+
+
+    
+    <li>
+      <a href="http://ionicframework.com/docs/api">API</a>
+    </li>
+
+  
+   <li>
+     <a href="http://ionicframework.com/docs/native/">Native</a>
+   </li>
+
+   
+    <li class="">
+      <a href="http://ionicframework.com/docs/storage/">Storage</a>
+    </li>
+
+  
+  <li class="">
+    <a ng-click="showTheming = !showTheming">Theming</a>
+    <ul ng-show="showTheming" class="ng-hide">
+      <li class="">
+        <a href="http://ionicframework.com/docs/theming/">Intro</a>
+      </li>
+      <li class="">
+        <a href="http://ionicframework.com/docs/theming/css-utilities/">CSS Utilities</a>
+      </li>
+      <li class="">
+        <a href="http://ionicframework.com/docs/theming/responsive-grid/">Responsive Grid</a>
+      </li>
+      <li class="">
+        <a href="http://ionicframework.com/docs/theming/theming-your-app/">Theming your App</a>
+      </li>
+      <li class="">
+        <a href="http://ionicframework.com/docs/theming/sass-variables/">Sass Variables</a>
+      </li>
+      <li class="">
+        <a href="http://ionicframework.com/docs/theming/platform-specific-styles/">
+          Platform Styles
+        </a>
+      </li>
+      <li class="">
+        <a href="http://ionicframework.com/docs/theming/overriding-ionic-variables/">
+          Overriding Ionic Variables
+        </a>
+      </li>
+      <li class="">
+        <a href="http://ionicframework.com/docs/theming/rtl-support/">
+         RTL Support
+        </a>
+      </li>
+    </ul>
+  </li>
+
+  
+  <li class="">
+    <a href="http://ionicframework.com/docs/ionicons/">Ionicons</a>
+  </li>
+
+  
+  <li class="active">
+    <a ng-click="showCli = !showCli">CLI</a>
+    <ul ng-show="showCli" ng-init="showCli = true" class="">
+      <li class="">
+        <a href="http://ionicframework.com/docs/cli/">Intro</a>
+      </li>
+      
+        <li class="">
+          <a href="http://ionicframework.com/docs/cli/cordova/build/">cordova build</a>
+        </li>
+      
+        <li class="">
+          <a href="http://ionicframework.com/docs/cli/cordova/compile/">cordova compile</a>
+        </li>
+      
+        <li class="">
+          <a href="http://ionicframework.com/docs/cli/cordova/emulate/">cordova emulate</a>
+        </li>
+      
+        <li class="active">
+          <a href="http://ionicframework.com/docs/cli/cordova/platform/">cordova platform</a>
+        </li>
+      
+        <li class="">
+          <a href="http://ionicframework.com/docs/cli/cordova/plugin/">cordova plugin</a>
+        </li>
+      
+        <li class="">
+          <a href="http://ionicframework.com/docs/cli/cordova/prepare/">cordova prepare</a>
+        </li>
+      
+        <li class="">
+          <a href="http://ionicframework.com/docs/cli/cordova/resources/">cordova resources</a>
+        </li>
+      
+        <li class="">
+          <a href="http://ionicframework.com/docs/cli/cordova/run/">cordova run</a>
+        </li>
+      
+        <li class="">
+          <a href="http://ionicframework.com/docs/cli/docs/">docs</a>
+        </li>
+      
+        <li class="">
+          <a href="http://ionicframework.com/docs/cli/generate/">generate</a>
+        </li>
+      
+        <li class="">
+          <a href="http://ionicframework.com/docs/cli/info/">info</a>
+        </li>
+      
+        <li class="">
+          <a href="http://ionicframework.com/docs/cli/link/">link</a>
+        </li>
+      
+        <li class="">
+          <a href="http://ionicframework.com/docs/cli/login/">login</a>
+        </li>
+      
+        <li class="">
+          <a href="http://ionicframework.com/docs/cli/package/build/">package build</a>
+        </li>
+      
+        <li class="">
+          <a href="http://ionicframework.com/docs/cli/package/download/">package download</a>
+        </li>
+      
+        <li class="">
+          <a href="http://ionicframework.com/docs/cli/package/info/">package info</a>
+        </li>
+      
+        <li class="">
+          <a href="http://ionicframework.com/docs/cli/package/list/">package list</a>
+        </li>
+      
+        <li class="">
+          <a href="http://ionicframework.com/docs/cli/serve/">serve</a>
+        </li>
+      
+        <li class="">
+          <a href="http://ionicframework.com/docs/cli/signup/">signup</a>
+        </li>
+      
+        <li class="">
+          <a href="http://ionicframework.com/docs/cli/start/">start</a>
+        </li>
+      
+        <li class="">
+          <a href="http://ionicframework.com/docs/cli/telemetry/">telemetry</a>
+        </li>
+      
+        <li class="">
+          <a href="http://ionicframework.com/docs/cli/upload/">upload</a>
+        </li>
+      
+    </ul>
+  </li>
+
+  
+  <li class="">
+    <a href="http://ionicframework.com/docs/troubleshooting/">Troubleshooting</a>
+  </li>
+
+  
+  <li class="">
+    <a href="http://ionicframework.com/docs/developer-resources">Resources</a>
+    
+  </li>
+</ul>
+
+    
+  </nav>
+  
+  <main>
+    <h1 id="-ionic-cordova-platform"><code class="highlighter-rouge">$ ionic cordova platform</code></h1>
+
+<p>Manage Cordova platform targets</p>
+<h2 id="synopsis">Synopsis</h2>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code class="hljs scss"><span class="gp">$ </span>ionic cordova platform <span class="o"><span class="hljs-attr_selector">[</span></span><span class="hljs-attr_selector">&lt;action&gt;]</span> <span class="o"><span class="hljs-attr_selector">[</span></span><span class="hljs-attr_selector">&lt;platform&gt;]</span>
+</code></pre>
+</div>
+
+<h2 id="details">Details</h2>
+
+<p>Like running <code class="highlighter-rouge">cordova platform</code> directly, but adds default Ionic icons and splash screen resources (during <code class="highlighter-rouge">add</code>) and provides friendly checks.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Input</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">action</code></td>
+      <td><code class="highlighter-rouge">add</code>, <code class="highlighter-rouge">remove</code>, or <code class="highlighter-rouge">update</code> a platform; <code class="highlighter-rouge">ls</code>, <code class="highlighter-rouge">check</code>, or <code class="highlighter-rouge">save</code> all project platforms</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">platform</code></td>
+      <td>The platform that you would like to add (e.g. <code class="highlighter-rouge">ios</code>, <code class="highlighter-rouge">android</code>)</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>Option</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">--noresources</code>, <code class="highlighter-rouge">-r</code></td>
+      <td>Do not add default Ionic icons and splash screen resources (corresponds to <code class="highlighter-rouge">add</code>)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="examples">Examples</h2>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code class="hljs"><span class="gp">$ </span>ionic cordova platform 
+<span class="gp">$ </span>ionic cordova platform add ios
+<span class="gp">$ </span>ionic cordova platform add android
+<span class="gp">$ </span>ionic cordova platform rm ios
+</code></pre>
+</div>
+
+  </main>
+</div>
+
+
+    
+
+    
+
+    
+
+    <div id="search-results">
+      <div id="results-api">
+        <h3>API</h3>
+        <ul></ul>
+      </div>
+      <div id="results-native">
+        <h3>Native</h3>
+        <ul></ul>
+      </div>
+      <div id="results-other">
+        <h3>General</h3>
+        <ul></ul>
+      </div>
+    </div>
+    <script async="" src="./Ionic CLI Documentation - cordova platform_files/analytics.js"></script><script src="./Ionic CLI Documentation - cordova platform_files/api.js"></script>
+
+<script src="./Ionic CLI Documentation - cordova platform_files/ionic-site.min.js"></script>
+
+
+
+  
+
+</body></html>
