@@ -1,5 +1,6 @@
 
 * [as打jar和aar包](#as打jar和aar包)
+* [混淆打包](#混淆打包)
 
 
 # as打jar和aar包
@@ -15,3 +16,7 @@
     - jar路径：moduleName/intermediates/bundles
 
     - aar路径：moduleName/outputs/aar
+
+# 混淆打包
+
+-

@@ -1,5 +1,6 @@
 
 - [创建表空间](#创建表空间)
+- [导入导出数据](#导入导出数据)
 
 # 创建表空间
 
@@ -84,11 +85,11 @@
 	su - oracle
 
 	----例子---
-	--正式
+	--
 	/home/oracle/app/oracle/admin/orcl/dpdump/
-	--测试
+	--
 	/opt/oracle/admin/FDATEST/dpdump/
-	--本地
+	--
 	E:\oracledb/admin/orcl/dpdump/
 	---------
 
@@ -99,7 +100,7 @@
 	在linux命令中输入
 	expdp 用户名/密码 directory=DATA_PUMP_DIR dumpfile=文件名.dump schemas=表空间
 	如
-	expdp GX_FDA_AUDIT/123456 directory=DATA_PUMP_DIR dumpfile=GX_FDA_AUDIT2017062201.dump schemas=GX_FDA_AUDIT
+	expdp GX_FDA_SYS_NEW/123456 directory=DATA_PUMP_DIR dumpfile=GX_FDA_SYS_NEW2017071301.dump schemas=GX_FDA_SYS_NEW
 
 - exp
 
@@ -116,7 +117,8 @@
 	impdp 用户名/密码 directory=DATA_PUMP_DIR dumpfile=文件名.dump table_exists_action=replace schemas=表空间
 	如
 	impdp GX_FDA_APP/123456 directory=DATA_PUMP_DIR dumpfile=GX_FDA_APP2017062201.dump table_exists_action=replace schemas=GX_FDA_APP
-	impdp GX_FDA_AUDIT/123456 directory=DATA_PUMP_DIR dumpfile=GX_FDA_AUDIT2017062201.dump table_exists_action=replace schemas=GX_FDA_AUDIT
+
+	impdp GX_FDA_SYS_NEW/123456 directory=DATA_PUMP_DIR dumpfile=GX_FDA_SYS_NEW2017071301.dump table_exists_action=replace schemas=GX_FDA_SYS_NEW
 
 - imp
 
