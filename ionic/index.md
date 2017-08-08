@@ -2,6 +2,7 @@
 * [install](#install)
 * [update](#update)
 * [关于图标和图片](#关于图标和图片)
+* [add platform](#add platform)
 
 # install
 
@@ -9,7 +10,7 @@
 
     指令：`npm install -g ionic`
 
-    清空缓存：`npm cache clean`
+    清空缓存：`npm cache clean -f`
 
 
 # update
@@ -58,3 +59,7 @@
         <splash src="resources\android\splash\drawable-port-xxhdpi-screen.png" density="port-xxhdpi"/>
     </platform>
 ```
+
+# add platform
+
+`cordova platform add android --nofetch`

@@ -1,0 +1,58 @@
+DbVisualizer常见问题解答 
+ 可否完全禁用数据编辑? 可以。 
+方法： 
+在文本编辑器里打开文件 DBVIS-HOME/resources/dbvis-custom.prefs. 
+找出 dbvis.disabledataedit property 
+把它的值设置为true。记住要去掉该行开始的“#”。 
+保存文件，然后重新启动 DbVisualizer。 
+
+ Mini how to's 怎么样⋯⋯? 
+我怎么样执行SQL脚本? 
+DbVisualizer个人版支持该功能。输入SQL语句，然后以工具属性中指定的界定符进行界定(默认界定符为“;”) 
+
+
+怎么样在 DbVisualizer免费版里编辑表格数据? 
+以下简单介绍了如使用变量代替功能来编辑数据。 
+首先在数据库对象树中选择表格。 
+选择要编辑的表格的“Data”选项卡。 
+当鼠标在网格区的时候，单击鼠标右键，显示弹出菜单。 
+弹出菜单列出了以下编辑选项： 
+insert into 
+insert COPY into 
+update where 
+delete from 
+这些选项中除了“insert into”都要求选中至少一行中的一个单元格。选中的单元格会作为最后“where”从句中的对象。确保您选中合适的单元格。 
+选择了选项后， SQL Commander会出现。现在编辑区会包含一个伪SQL语句。该语句包含 DbVisualizer变量和默认值。 
+现在点击 SQL Commander中的“执行”。 
+然后会出现一个包含所有数据的表格。 
+在这个表格里实施编辑。 
+完成! 
+
+
+7.3 怎么样增大Java的内存? 
+DbVisualizer默认Java VM最大内存为256MB。以下步骤为如何为每一个平台扩大内存。 
+Windows/Linux/UNIX: 
+在文本中打开 dbvis.vmoptions options文件(该文件在 DbVisualizer安装目录里)。 
+可以在这个文件中添加任何Java系统属性，每一行都成为Java VM的标准系统属性： 
+-Xmx256m 
+(以上例子设置内存为256MB，但是您可以把它设置为适合您系统的值。 
+Mac OS X: 
+在 Mac OS X里，编辑 Info.plist文件，修改Java VM包含最大内存属性的参数。 
+想了解更多参考Changing properties and Java VM on Mac OS X 
+。 
+
+
+7.4 如何改变DbVisualizer使用的 Java VM? 
+在 DbVisualizer安装目录里有一个.install4j目录。在这个目录里创建一个名为 pref_jre.cfg的文件。在文本编辑器中打开该文件，在根目录里添加您想要使用的Java安装完整路径。 
+比如：C:\Program Files\Java\jdk1.5.0_02 
+Mac OS X：参考 Changing properties and Java VM on Mac OS X 
+。 
+
+
+7.5 Mac OS X操作疑问 
+参考FAQ - Mac OS X 
+。 
+
+
+7.6 怎么样把设置移植到新机器上? 
+所有的个人设置都保存在.dbvis目录里。该目录存储位置根据用户使用的OS不同而不同。要从一个机器上把设置移植到新机器上，只要在原来的机器上把.dbvis目录压缩到最大程度，然后在目标机器上解压缩。 

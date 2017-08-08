@@ -9,7 +9,7 @@
 
 `
 use mysql;
-update user set host = '%' where user = 'root';
+grant all privileges on *.* to 'root'@'%' identified by '123456' with grant option;
 select host, user from user;
 flush privileges;
 `

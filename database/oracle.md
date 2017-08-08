@@ -1,6 +1,19 @@
 
+- [启动oracle](#启动oracle)
 - [创建表空间](#创建表空间)
 - [导入导出数据](#导入导出数据)
+
+# 启动oracle
+
+- linux
+
+    1. 登陆服务器，切换到oracle用户`su - oracle`
+
+    2. 查看监听状态 `lsnrctl status`, 启动监听 `lsnrctl start`
+
+    3. 以system用户身份登陆oracle  `sqlplus conn as sysdba`
+
+    4. 启动命令 `startup`
 
 # 创建表空间
 
@@ -13,8 +26,8 @@
         临时表空间：
         create temporary tablespace 临时表空间名 tempfile 文件路径 size 大小 autoextend off;
         列：
-        create tablespace GX_FDA_AUDIT logging datafile 'E:\oracledb\oradata\orcl\GX_FDA_AUDIT.dbf' size 125m autoextend off;
-        create temporary tablespace gx_fda_audit_temp tempfile 'E:\oracledb\oradata\orcl\gx_fda_audit_temp.dbf' size 125m autoextend off;
+        create tablespace NNGOV_OA logging datafile 'E:\oracledb\oradata\orcl\NNGOV_OA.dbf' size 7100m autoextend off;
+        create temporary tablespace NNGOV_OA_temp tempfile 'E:\oracledb\oradata\orcl\NNGOV_OA_temp.dbf' size 3024m autoextend off;
     ```
 
 - 建好tablespace, 就可以建用户了
@@ -22,7 +35,8 @@
     ```
         create user 用户名 identified by 密码 default tablespace 表空间表;
 
-        create user GX_FDA_AUDIT identified by 123456 default tablespace GX_FDA_AUDIT temporary tablespace gx_fda_audit_temp;
+        create user NNGOV_OA identified by 123456 default tablespace NNGOV_OA;
+        create user NNGOV_OA identified by 123456 default tablespace NNGOV_OA temporary tablespace NNGOV_OA_temp;
 
     ```
 
@@ -41,13 +55,13 @@
 - 授权用户 若要创建跨用户的视图则要加入 select any table 的权限
 
     ```
-        grant connect,resource,dba,select any table,drop any synonym to GX_FDA_AUDIT;
+        grant connect,resource,dba,select any table,drop any synonym to lz_fda_aipcase;
     ```
 
 - 加大空间
 
     ```
-    alter tablespace gx_fda_mobile add datafile 'E:\oracledb\oradata\orcl\gx_fda_mobile.dbf' size 1024m;
+    alter tablespace NNGOV_OA add datafile 'E:\oracledb\oradata\orcl\NNGOV_OA.dbf' size 7024m;
     ```
 
 - 删除表空间
@@ -67,10 +81,24 @@
 
     select file_name,tablespace_name,bytes/1024/1024 from dba_data_files where tablespace_name='GX_FDA_OA';
     ```
+
 - 加大数据文件
     ```
     alter database datafile 'E:\ORACLEDB\ORADATA\ORCL\GX_FDA_OA.DBF' resize 5120M;
     ```
+
+- 修改默认表空间
+    ```
+    alter user user_name default tablespace tbs_name;
+    alter user lz_fda_aipcase default tablespace lz_fda_aipcase;
+    设置数据库的默认临时表空间:
+    Alter database default temporary tablespace temp_tbs_name;
+    ```
+
+create tablespace GGFDA_MRCD logging datafile 'E:\oracledb\oradata\orcl\GGFDA_MRCD.dbf' size 125m autoextend off;
+create temporary tablespace GGFDA_MRCD_TEMP tempfile 'E:\oracledb\oradata\orcl\GGFDA_MRCD_TEMP.dbf' size 125m autoextend off;
+create user GGFDA_MRCD identified by 123456 default tablespace GGFDA_MRCD temporary tablespace GGFDA_MRCD_TEMP;
+grant connect,resource,dba,select any table,drop any synonym to GGFDA_MRCD;
 
 # 导入导出数据
 
@@ -100,11 +128,16 @@
 	在linux命令中输入
 	expdp 用户名/密码 directory=DATA_PUMP_DIR dumpfile=文件名.dump schemas=表空间
 	如
-	expdp GX_FDA_SYS_NEW/123456 directory=DATA_PUMP_DIR dumpfile=GX_FDA_SYS_NEW2017071301.dump schemas=GX_FDA_SYS_NEW
+	expdp LZ_FDA_AIPCASE/123456 directory=DATA_PUMP_DIR dumpfile=LZ_FDA_AIPCASE20170806.dump schemas=LZ_FDA_AIPCASE
+	expdp ggfda_mrcd/123456@orclpdb directory=DATA_PUMP_DIR dumpfile=ggfda_mrcd2017072301.dump schemas=ggfda_mrcd
+
+    * 12c 导出 11g ，加入版本号 version=11.2.0.1.0 （版本号查看`select version from v$instance;`）
+
+    expdp ggfda_mrcd/123456@orclpdb directory=DATA_PUMP_DIR dumpfile=ggfda_mrcd2017072301_11g.dump schemas=ggfda_mrcd version=11.2.0.1.0
 
 - exp
 
-    exp userid=NNDJ_CMS/123456 file=/home/oracle/app/oracle/admin/orcl/dpdump/NNDJ_CMS2017061202.dmp owner=NNDJ_CMS
+    exp userid=ggfda_mrcd/123456 file=/home/oracle/app/oracle/admin/orcl/dpdump/ggfda_mrcd2017061202.dmp owner=ggfda_mrcd
 
 4.导入
 
@@ -116,9 +149,9 @@
 	su - oracle
 	impdp 用户名/密码 directory=DATA_PUMP_DIR dumpfile=文件名.dump table_exists_action=replace schemas=表空间
 	如
-	impdp GX_FDA_APP/123456 directory=DATA_PUMP_DIR dumpfile=GX_FDA_APP2017062201.dump table_exists_action=replace schemas=GX_FDA_APP
+	impdp LZ_FDA_SYS/123456 directory=DATA_PUMP_DIR dumpfile=LZ_FDA_AIPCASE20170806.dump table_exists_action=replace schemas=LZ_FDA_AIPCASE
 
-	impdp GX_FDA_SYS_NEW/123456 directory=DATA_PUMP_DIR dumpfile=GX_FDA_SYS_NEW2017071301.dump table_exists_action=replace schemas=GX_FDA_SYS_NEW
+	impdp ggfda_mrcd/123456 directory=DATA_PUMP_DIR dumpfile=ggfda_mrcd2017072301_11g.dump table_exists_action=replace schemas=ggfda_mrcd
 
 - imp
 

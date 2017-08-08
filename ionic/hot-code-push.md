@@ -11,12 +11,12 @@
 2. 在项目中添加插件
 
     ```
-        ionic plugin add cordova-hot-code-push-plugin
+        cordova plugin add cordova-hot-code-push-plugin
     ```
 
     本地调试(可不安装)：
     ```
-        ionic plugin add cordova-hot-code-push-local-dev-addon
+        cordova plugin add cordova-hot-code-push-local-dev-addon
     ```
 
 3. 初始化配置模板

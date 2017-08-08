@@ -2,6 +2,14 @@
 
 - 方法封装
 ```
+/**
+ * 替换html字符串中的{x},x为参数下标
+ * 如：
+ *      formatHtml('<div>{0},{1}</div>','p1','p2')    --->   <div>p1,p2</div>
+ * @param source
+ * @param params
+ * @returns {*}
+ */
 $.format = function (source, params) {
     if (arguments.length == 1)
         return function () {
