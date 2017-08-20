@@ -19,6 +19,11 @@
         cordova plugin add cordova-hot-code-push-local-dev-addon
     ```
 
+    !!发布app时要移除这个插件
+    ```
+        cordova plugin rm cordova-hot-code-push-local-dev-addon
+    ```
+
 3. 初始化配置模板
 
     ```
@@ -27,7 +32,19 @@
 
     - content_url 服务器上www文件夹的路径，如<http://xxxx/xxx/apphcp/www/> ，服务器上 部署项目路径+apphcp/www/下放着原www目录下的所有文件。
 
-    - 初始化后会生成cordova-hcp.json文件，之后每次更新都会以这个为模板生成chcp.json文件
+    - 初始化后会生成cordova-hcp.json文件，之后每次更新都会以这个为模板生成chcp.json文件.
+
+      * content_url
+
+      服务端URL, 也就是你所有web内容文件的位置. 插件会把它作为下载新的清单文件、新的web内容文件的 base url. 此项必须.
+
+      * release
+
+      任何字符串. 每次release应该唯一. 插件基于这个才知道有没有新版本release. 此项必须.
+
+      重要: 插件只比较release字符串是否相等, 如果不等，就认为服务端有新版本.（!!!不会比较大小!!!）
+
+
 
 4. 生成chcp.json和chcp.manifest文件
 
