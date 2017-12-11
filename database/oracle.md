@@ -153,6 +153,10 @@ grant connect,resource,dba,select any table,drop any synonym to GGFDA_MRCD;
 
 	impdp ggfda_mrcd/123456 directory=DATA_PUMP_DIR dumpfile=ggfda_mrcd2017072301_11g.dump table_exists_action=replace schemas=ggfda_mrcd
 
+    表空间不同
+
+    impdp gx_fda_mobile2/123456 directory=DATA_PUMP_DIR dumpfile=gxfdamobile20160119.dump table_exists_action=replace remap_schema=gx_fda_mobile:gx_fda_mobile2
+
 - imp
 
 	imp userid=NNDJ_CMS/123456 file=E:\oracledb\admin\orcl\dpdump\NNDJ_CMS2017061202.dmp fromuser=NNDJ_CMS touser=NNDJ_CMS

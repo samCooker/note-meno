@@ -19,3 +19,5 @@ nameserver 8.8.4.4 #google域名服务器
 ```
     wget 下载url
 ```
+
+#

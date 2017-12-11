@@ -22,3 +22,11 @@ allprojects {
     }
 }
 ```
+
+```
+//开源中国镜像
+
+repositories {       mavenCentral()       jcenter()       mavenLocal()   }
+
+allprojects {    repositories {        maven{ url 'http://maven.oschina.net/content/groups/public/'}    }}
+```
