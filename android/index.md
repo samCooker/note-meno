@@ -20,3 +20,9 @@
 # 混淆打包
 
 -
+
+# 使用Ionic打包遇到“Error: spawn EACCES”
+
+- 用as打开
+
+- chmod -R a+rwx 文件路径
