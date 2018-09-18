@@ -26,8 +26,11 @@
         临时表空间：
         create temporary tablespace 临时表空间名 tempfile 文件路径 size 大小 autoextend off;
         列：
-        create tablespace NNGOV_OA logging datafile 'E:\oracledb\oradata\orcl\NNGOV_OA.dbf' size 7100m autoextend off;
-        create temporary tablespace NNGOV_OA_temp tempfile 'E:\oracledb\oradata\orcl\NNGOV_OA_temp.dbf' size 3024m autoextend off;
+        create tablespace GX_FDA_SYS logging datafile '/home/oracle/app/oradata/shicx/GX_FDA_SYS.dbf' size 512m autoextend off;
+        create temporary tablespace GX_FDA_SYS_TEMP tempfile '/home/oracle/app/oradata/shicx/GX_FDA_SYS_TEMP.dbf' size 125m autoextend off;
+
+        create tablespace GX_FDA_OA logging datafile '/home/oracle/app/oradata/shicx/GX_FDA_OA.dbf' size 512m autoextend off;
+        create temporary tablespace GX_FDA_OA_TEMP tempfile '/home/oracle/app/oradata/shicx/GX_FDA_OA_TEMP.dbf' size 125m autoextend off;
     ```
 
 - 建好tablespace, 就可以建用户了
@@ -35,8 +38,8 @@
     ```
         create user 用户名 identified by 密码 default tablespace 表空间表;
 
-        create user NNGOV_OA identified by 123456 default tablespace NNGOV_OA;
-        create user NNGOV_OA identified by 123456 default tablespace NNGOV_OA temporary tablespace NNGOV_OA_temp;
+        create user MSXOA identified by 123456 default tablespace GX_FDA_SYS;
+        create user GX_FDA_OA identified by gxfda1234 default tablespace GX_FDA_OA temporary tablespace GX_FDA_OA_TEMP;
 
     ```
 
@@ -56,6 +59,7 @@
 
     ```
         grant connect,resource,dba,select any table,drop any synonym to lz_fda_aipcase;
+        grant connect,resource to MSXOA;
     ```
 
 - 加大空间
@@ -67,12 +71,14 @@
 - 删除表空间
 
     ```
-    DROP TABLESPACE gx_fda_app INCLUDING CONTENTS AND DATAFILES;
+    DROP TABLESPACE GX_FDA_OA INCLUDING CONTENTS AND DATAFILES;
+    DROP TABLESPACE GX_FDA_SYS INCLUDING CONTENTS AND DATAFILES;
     ```
 
 - 删除用户
     ```
-    drop user gx_fda_app cascade;
+    drop user gx_fda_oa cascade;
+    drop user gx_fda_sys cascade;
     ```
 
 - 查看剩余空间
@@ -98,7 +104,7 @@
 create tablespace GGFDA_MRCD logging datafile 'E:\oracledb\oradata\orcl\GGFDA_MRCD.dbf' size 125m autoextend off;
 create temporary tablespace GGFDA_MRCD_TEMP tempfile 'E:\oracledb\oradata\orcl\GGFDA_MRCD_TEMP.dbf' size 125m autoextend off;
 create user GGFDA_MRCD identified by 123456 default tablespace GGFDA_MRCD temporary tablespace GGFDA_MRCD_TEMP;
-grant connect,resource,dba,select any table,drop any synonym to GGFDA_MRCD;
+grant connect,resource,dba,select any table,drop any synonym to GX_FDA_OA;
 
 # 导入导出数据
 
@@ -128,7 +134,7 @@ grant connect,resource,dba,select any table,drop any synonym to GGFDA_MRCD;
 	在linux命令中输入
 	expdp 用户名/密码 directory=DATA_PUMP_DIR dumpfile=文件名.dump schemas=表空间
 	如
-	expdp LZ_FDA_AIPCASE/123456 directory=DATA_PUMP_DIR dumpfile=LZ_FDA_AIPCASE20170806.dump schemas=LZ_FDA_AIPCASE
+	expdp GX_FDA_OA/123456 directory=DATA_PUMP_DIR dumpfile=GX_FDA_OA20180728.DUMP schemas=GX_FDA_OA
 	expdp ggfda_mrcd/123456@orclpdb directory=DATA_PUMP_DIR dumpfile=ggfda_mrcd2017072301.dump schemas=ggfda_mrcd
 
     * 12c 导出 11g ，加入版本号 version=11.2.0.1.0 （版本号查看`select version from v$instance;`）
@@ -149,13 +155,15 @@ grant connect,resource,dba,select any table,drop any synonym to GGFDA_MRCD;
 	su - oracle
 	impdp 用户名/密码 directory=DATA_PUMP_DIR dumpfile=文件名.dump table_exists_action=replace schemas=表空间
 	如
-	impdp LZ_FDA_SYS/123456 directory=DATA_PUMP_DIR dumpfile=LZ_FDA_AIPCASE20170806.dump table_exists_action=replace schemas=LZ_FDA_AIPCASE
+	impdp GX_FDA_OA/gxfda1234 directory=DATA_PUMP_DIR dumpfile=gx_fda_oa2018072401.dump table_exists_action=replace schemas=GX_FDA_OA
 
 	impdp ggfda_mrcd/123456 directory=DATA_PUMP_DIR dumpfile=ggfda_mrcd2017072301_11g.dump table_exists_action=replace schemas=ggfda_mrcd
 
     表空间不同
 
-    impdp gx_fda_mobile2/123456 directory=DATA_PUMP_DIR dumpfile=gxfdamobile20160119.dump table_exists_action=replace remap_schema=gx_fda_mobile:gx_fda_mobile2
+    impdp system/FSYoracle123456 directory=DATA_PUMP_DIR dumpfile=MSX_OA20180724.DUMP table_exists_action=replace remap_schema=MSX_OA:MSXOA
+
+    DATA_OPTIONS=SKIP_CONSTRAINT_ERRORS
 
 - imp
 
