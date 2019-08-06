@@ -36,3 +36,23 @@
 回车后，输入命令 SET PASSWORD FOR 'root'@'localhost' = PASSWORD('你的新密码');
 
 SET PASSWORD FOR 'root'@'localhost' = PASSWORD('123456');
+
+# 创建用户
+
+CREATE USER 'shicx'@'%' IDENTIFIED BY "123";
+
+drop user 'shicx'@'%';
+
+grant all privileges on *.* to root@'%' identified by 'FSY8ik,9ol.';
+
+
+# Mysql 修改密码加密方式
+
+修改密码加密方式，改成mysql_native_password
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
+
+然后修改密码：
+
+SET PASSWORD FOR 'root'@'localhost' = PASSWORD('newpassword');
+或者执行命令flush privileges使权限配置项立即生效。

@@ -4,6 +4,8 @@
 
 1. 连接SQLplus
 
+    `su - oracle`
+
     `sqlplus connect as sysdba`
 
 - 查询密码的有效期设置，LIMIT字段是密码有效天数，默认180天。
@@ -18,11 +20,11 @@
 
     `ALTER USER 用户名 IDENTIFIED BY 密码;`
 
-    `ALTER USER lz_fda_aipcase IDENTIFIED BY 123456;`
+    `ALTER USER MSXOA IDENTIFIED BY msx1234;`
 
 - 如果账号被锁住，则需要解锁命令
 
-  `alter user lz_fda_aipcase identified by oracle account unlock;`
+  `alter user GX_FDA_MOBILE identified by oracle account unlock;`
 
 # 无法删除用户
 

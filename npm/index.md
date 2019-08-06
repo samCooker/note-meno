@@ -30,3 +30,17 @@ npm --registry https://registry.npm.taobao.org info underscore
 3.编辑 ~/.npmrc 加入下面内容
 
 registry = https://registry.npm.taobao.org
+
+# 常见错误
+
+- VCBuild不存在的错误
+
+   ```
+        MSBUILD : error MSB3428: 未能加载 Visual C++ 组件“VCBuild.exe”。要解决此问题，1) 安装 .NET Framework 2.0 SDK；2) 安装 Microsoft Visual Stu
+       dio 2005；或 3) 如果将该组件安装到了其他位置，请将其位置添加到系统路径中。 [C:\Users\zongren\zongren.gitlab.io\node_modules\microtime\build\binding.sl
+       n]
+   ```
+
+   使用npm安装windows build tools `npm install --global --production windows-build-tools`
+
+

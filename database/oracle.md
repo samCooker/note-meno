@@ -136,6 +136,8 @@ grant connect,resource,dba,select any table,drop any synonym to GX_FDA_OA;
 	如
 	expdp GX_FDA_OA/123456 directory=DATA_PUMP_DIR dumpfile=GX_FDA_OA20180728.DUMP schemas=GX_FDA_OA
 	expdp ggfda_mrcd/123456@orclpdb directory=DATA_PUMP_DIR dumpfile=ggfda_mrcd2017072301.dump schemas=ggfda_mrcd
+	
+	expdp GX_FDA_MOBILE/nhy6mju7123 directory=DATA_PUMP_DIR dumpfile=gxfda_mobile_2019062001.dump tables=SYS_USER,SYS_USER_ORG_MAPPING
 
     * 12c 导出 11g ，加入版本号 version=11.2.0.1.0 （版本号查看`select version from v$instance;`）
 
@@ -158,6 +160,8 @@ grant connect,resource,dba,select any table,drop any synonym to GX_FDA_OA;
 	impdp GX_FDA_OA/gxfda1234 directory=DATA_PUMP_DIR dumpfile=gx_fda_oa2018072401.dump table_exists_action=replace schemas=GX_FDA_OA
 
 	impdp ggfda_mrcd/123456 directory=DATA_PUMP_DIR dumpfile=ggfda_mrcd2017072301_11g.dump table_exists_action=replace schemas=ggfda_mrcd
+	
+	impdp GX_FDA_MOBILE/123456 directory=DATA_PUMP_DIR dumpfile=gxfda_mobile_2019062001.dump table_exists_action=replace tables=SYS_USER,SYS_USER_ORG_MAPPING
 
     表空间不同
 

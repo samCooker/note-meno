@@ -17,3 +17,23 @@
   -XX:PermSize:设定内存的永久保存区域
 
   -XX:MaxPermSize:设定最大内存的永久保存区域
+  
+  
+- Can’t connect to X11 window server
+
+ 方法一：
+ 
+ 在 catalina.sh 文件添加 CATALINA_OPTS="-Djava.awt.headless=true"
+
+ 
+ 方法二：
+ 
+ 1. .bash_profile文件最后 加了个export JAVA_OPTS=-Djava.awt.headless=true
+ 
+重启tomcat
+ 
+ 2. 在linux终端执行
+ 
+ unset DISPLAY
+ 
+ 然后重启服务器即可

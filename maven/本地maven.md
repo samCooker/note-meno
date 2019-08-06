@@ -5,4 +5,4 @@
 
   执行命令：cmd 定位到目录下下
 
-  mvn install:install-file -DgroupId=xxxx -DartifactId=sdk-java -Dversion=xxx -Dpackaging=jar -Dfile=fileName.jar
+  mvn install:install-file -DgroupId=xxxx -DartifactId=xxxx -Dversion=xxx -Dpackaging=jar -Dfile=fileName.jar

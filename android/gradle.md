@@ -69,3 +69,11 @@ source "/Users/[your username]/.sdkman/bin/sdkman-init.sh"
 
 第二步：新打开一个终端安装你想要的gradle版本
 sdk install gradle 3.3
+
+## 添加aar
+
+1. 把aar复制到项目中的 libs 里面
+
+
+2. implementation fileTree(dir: 'libs', include: ['*.jar','*.aar'])
+
